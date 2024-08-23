@@ -7,6 +7,7 @@ import LongStayParking from './LongStayParking';
 const Terminal: React.FC = () => {
   const [heading, setHeading] = useState<string>('London Heathrow Airport Car Parks');
   const [currentComponent, setCurrentComponent] = useState<ReactNode>(null);
+  const [selectedTerminal, setSelectedTerminal] = useState<string | null>(null);
   const [description, setDescription] = useState<string>(
     `When You're Setting Off On Holiday, The Last Thing You Want To Worry About Is Transport To The Airport. 
     So, Why Not Use Our Comparison Platform To Find A Good Deal For Heathrow Airport Parking, And Drive To The Airport 
@@ -18,6 +19,7 @@ const Terminal: React.FC = () => {
     Parking Options.`
   );
   const handleTerminalClick = (terminalNumber: string) => {
+    setSelectedTerminal(terminalNumber);
     switch (terminalNumber) {
       case '2':
         setHeading('London Heathrow parking Terminal 2');
@@ -64,7 +66,7 @@ const Terminal: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto mt-10 p-8 rounded-lg shadow-lg">
+    <div className="container text-end mx-auto mt-10 p-8 ">
       {/* Button Container */}
       <div className="flex gap-4 mb-6 justify-center">
         <div className="flex rounded-xl text-xs sm:text-sm p-5 justify-center gap-4 bg-[#85BB65]">
@@ -93,14 +95,16 @@ const Terminal: React.FC = () => {
       </div>
 
       {/* Terminal Buttons and Content Area */}
-      <div className="flex flex-col md:flex-row items-start justify-between gap-8">
+      <div className="flex flex-col md:flex-row  items-start justify-between gap-8">
         {/* Terminal Buttons */}
-        <div className="flex flex-col ml-12 gap-7 mt-24 w-1/4">
+        <div className="flex flex-col ml-12 gap-7  mt-24 w-48">
           {['2', '3', '4', '5'].map((terminal) => (
             <button
               key={terminal}
               id={`terminal${terminal}`}
-              className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-lg shadow-md"
+              className={`${
+                selectedTerminal === terminal ? 'bg-[#5F833B] text-white' : 'bg-gray-200 text-gray-800'
+              } font-bold py-2 px-4 rounded-lg  shadow-md`}
               onClick={() => handleTerminalClick(terminal)}
             >
               Terminal {terminal}

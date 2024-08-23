@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const ParkingOptions:React.FC = () => {
   return (
-  <>
+  <div className='ml-36'>
     <div className="flex flex-col gap-5 mt-5 text-start">
       <section className=" py-9 ml-8">
         <div className="container mx-auto mt-10">
@@ -27,7 +27,7 @@ const ParkingOptions:React.FC = () => {
               <h2 className="text-3xl font-bold ">
                 Your Trusted Partner For Hassle-Free Airport Parking
               </h2>
-              <p className="text-black text-xl mt-6">
+              <p className="text-black text-sm mt-6">
                 At Budget Parking Heathrow, We're Committed To Making Your
                 Travel Experience As Smooth As Possible. Founded On The
                 Principle Of Providing Secure, Affordable, And Convenient
@@ -51,7 +51,7 @@ const ParkingOptions:React.FC = () => {
             <div className="flex-1 flex flex-col mr-[-200px] justify-between">
               <div className="">
               <h2 className="text-[40px] ml-[-450px] font-bold">Meet and Greet Parking</h2>
-              <p className="text-black w-[95%] ml-[-440px] text-xl mt-6">
+              <p className="text-black w-[95%] ml-[-440px] text-sm mt-6">
                 At Budget Parking Heathrow, We're Committed To Making Your
                 Travel Experience As Smooth As Possible. Founded On The
                 Principle Of Providing Secure, Affordable, And Convenient
@@ -73,7 +73,7 @@ const ParkingOptions:React.FC = () => {
 
 
     </div>
-  </>
+  </div>
   )
 }
 

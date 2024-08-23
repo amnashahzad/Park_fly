@@ -6,7 +6,7 @@ import Panels from "@/app/Images/panels.png"
 import Image from "next/image";
 const LongStayParking = () => {
   return (
-    <>
+    <div className='ml-36'>
     <section className="py-8 px-4">
       <div className="max-w-6xl mx-auto space-y-12">
         {/* Section 1 */}
@@ -58,7 +58,7 @@ const LongStayParking = () => {
       </div>
     </section>
     
-    </>
+    </div>
   )
 }
 

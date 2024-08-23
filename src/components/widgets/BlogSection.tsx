@@ -66,7 +66,7 @@ const BlogSection = () => {
     ];
 
     return (
-        <div className='sm:container w-full mt-[80px]'>
+        <div className='sm:container w-full mt-52'>
             <div className='mx-auto w-[90%] space-y-[6px]'>
                 <h2 className='uppercase text-[60px] font-bold text-center mt-[-200px]'>Where to Find Us</h2>
                 <p className='text-center text-[16px] font-normal'>Select your Heathrow terminal, compare parking options, prices, and services across a range of budget-friendly car parks. Don't see the service you need? We're constantly expanding, and new parking options will be available soon to meet your needs. Stay tuned for more additions!</p>

@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const CheapParking: React.FC = () => {
   return (
-    <>
+    <div className="ml-28">
   
     <section className="py-8 px-4">
       <div className="max-w-6xl mx-auto space-y-12">
@@ -47,7 +47,7 @@ const CheapParking: React.FC = () => {
         </div>
       </div>
     </section>
-    </>
+    </div>
   );
 };
 

@@ -1,13 +1,12 @@
 "use client";
-
-import React, { ChangeEvent, useState } from "react";
-import { Button } from "../ui/button";
-import { useRouter } from "next/navigation";
+import React, { ChangeEvent, useState } from 'react';
+import { Button } from '../ui/button';
+import { useRouter } from 'next/navigation';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format, addDays } from "date-fns";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils'; 
 import { Calendar } from "@/components/ui/calendar";
 import {
   Form,
@@ -42,8 +41,8 @@ const FormSchema = z.object({
 });
 
 const formatDate = (date: Date | null) => {
-  if (!date) return "";
-  const dayOfWeek = format(date, "EEE"); // Get the short name of the day of the week
+  if (!date) return '';
+  const dayOfWeek = format(date, 'EEE'); // Get the short name of the day of the week
   const formattedDate = format(date, "dd/MM/yyyy");
   return `${dayOfWeek}.${formattedDate}`; // Format as 'Day.DD/MM/YYYY'
 };
@@ -71,9 +70,7 @@ const AirportForm = () => {
     DropTime: "",
   });
 
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -81,11 +78,8 @@ const AirportForm = () => {
     });
   };
 
-  const handleDateChange = (
-    date: Date | null,
-    field: "PickDate" | "DropDate"
-  ) => {
-    if (field === "PickDate") {
+  const handleDateChange = (date: Date | null, field: 'PickDate' | 'DropDate') => {
+    if (field === 'PickDate') {
       setFormData((prevData) => ({
         ...prevData,
         PickDate: date,
@@ -101,61 +95,37 @@ const AirportForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    if (
-      !formData.airport ||
-      !formData.PickDate ||
-      !formData.PickTime ||
-      !formData.DropDate ||
-      !formData.DropTime
-    ) {
+    
+    if (!formData.airport || !formData.PickDate || !formData.PickTime || !formData.DropDate || !formData.DropTime) {
       alert("Please fill all required fields");
       return;
     }
 
     localStorage.setItem("userdata", JSON.stringify(formData));
-    router.push("/quote");
+    router.push('/quote');
   };
 
   return (
-    <div className="w-full mx-auto rounded-t-3xl mt-[-20%] z-10">
-      <div className="w-[80%] mx-auto bg-white rounded-t-3xl p-4 px-6">
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <Button className="outline-primary border-primary text-xs sm:text-sm h-10 sm:h-12 px-4 sm:px-6">
-            Airport Parking
-          </Button>
-          <Button
-            className="outline-primary text-primary border-primary text-xs sm:text-sm h-10 sm:h-12 px-4 sm:px-6"
-            variant={"outline"}
-          >
-            Hotel & Parking
-          </Button>
-          <Button
-            className="outline-primary text-primary border-primary text-xs sm:text-sm h-10 sm:h-12 px-4 sm:px-6"
-            variant={"outline"}
-          >
-            Lounge
-          </Button>
-          <Button
-            className="outline-primary text-primary border-primary text-sm h-10 sm:h-12 px-4 sm:px-6"
-            variant={"outline"}
-          >
-            Airport Transfer
-          </Button>
+    <div className='w-full sm:container z-10 mt-[-210px]'>
+      <div className='w-[90%] mx-auto bg-white rounded-t-3xl p-4 px-6'>
+        <div className='grid grid-cols-1 sm:grid-cols-4 gap-3'>
+          <Button className='outline-primary border-primary text-xs sm:text-sm'>Airport Parking</Button>
+          <Button className='outline-primary text-primary border-primary text-xs sm:text-sm' variant={"outline"}>Hotel & Parking</Button>
+          <Button className='outline-primary text-primary border-primary text-xs sm:text-sm' variant={"outline"}>Lounge</Button>
+          <Button className='outline-primary text-primary border-primary text-xs sm:text-sm' variant={"outline"}>Airport Transfer</Button>
         </div>
       </div>
 
-      <div className="container">
+      <div className='container'>
         <form onSubmit={handleSubmit}>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 container bg-white rounded-3xl shadow-lg p-6 sm:p-9">
+          <div className='grid grid-cols-2 sm:grid-cols-3 gap-4 container bg-white rounded-3xl shadow-lg p-9'>
+
             {/* Airport Dropdown */}
-            <div className="flex flex-col sm:w-[240px] ">
-              <label className="text-gray-700 font-semibold mb-2">
-                Airport
-              </label>
-              <select
-                name="airport"
-                className="py-2 px-4 bg-white w-full rounded-lg border border-gray-300 h-[80%]"
+            <div className='flex flex-col'>
+              <label className='text-gray-700 font-semibold mb-2 ml-[20px]'>Airport</label>
+              <select  
+                name="airport" 
+                className="w-[160px] py-2 px-4 bg-white rounded-lg"
                 value={formData.airport}
                 onChange={handleChange}
               >
@@ -165,11 +135,9 @@ const AirportForm = () => {
             </div>
 
             {/* Date From */}
-            <div className="flex flex-col sm:w-[340px] sm:ml-[-35%] z-[1px] rounded-lg">
-              <label className="text-gray-700 font-semibold mb-2">
-                Date From
-              </label>
-              <div className="flex items-center space-x-2 rounded-lg border border-gray-300">
+            <div className='flex flex-col ml-[-145px]'>
+              <label className='text-gray-700 font-semibold mb-2'>Date From</label>
+              <div className='flex items-center space-x-2'>
                 <Form {...form}>
                   <FormField
                     control={form.control}
@@ -182,11 +150,11 @@ const AirportForm = () => {
                               <Button
                                 variant={"outline"}
                                 className={cn(
-                                  "w-full sm:w-[180px] pl-3 text-left font-normal border-none",
+                                  "w-[180px] pl-3 text-left font-normal",
                                   !field.value && "text-muted-foreground"
                                 )}
                               >
-                                <FaCalendarAlt className="mr-2 text-gray-500" />
+                                <FaCalendarAlt className="mr-2 text-gray-500" /> {/* Calendar icon */}
                                 {field.value ? (
                                   formatDate(field.value)
                                 ) : (
@@ -197,13 +165,16 @@ const AirportForm = () => {
                           </PopoverTrigger>
                           <PopoverContent className="w-auto p-0" align="start">
                             <Calendar
-                              className="bg-white-500"
+                              className='bg-white-500'
                               mode="single"
                               selected={formData.PickDate}
                               onSelect={(date) => {
                                 field.onChange(date);
-                                handleDateChange(date, "PickDate");
+                                handleDateChange(date, 'PickDate');
                               }}
+                              disabled={(date) =>
+                                date > new Date() || date < new Date("1900-01-01")
+                              }
                               initialFocus
                             />
                           </PopoverContent>
@@ -217,20 +188,18 @@ const AirportForm = () => {
                 <input
                   type="time"
                   name="PickTime"
-                  className="w-full sm:w-[120px] py-2 px-4 bg-white border-none rounded-lg"
+                  className="w-[32%] ml[-40px] py-2 px-4 bg-white rounded-lg focus:outline-none"
                   value={formData.PickTime}
                   onChange={handleChange}
-                  pattern="[0-9]{2}:[0-9]{2}"
+                  pattern="[0-9]{2}:[0-9]{2}" // Ensure the time format is 24-hour without AM/PM
                 />
               </div>
             </div>
 
             {/* Date To */}
-            <div className="flex flex-col sm:w-[350px] sm:ml-[-41%]">
-              <label className="text-gray-700 font-semibold mb-2">
-                Date To
-              </label>
-              <div className="flex items-center space-x-2 rounded-lg border border-gray-300">
+            <div className='flex flex-col ml-[-127px]'>
+              <label className='text-gray-700 font-semibold mb-2'>Date To</label>
+              <div className='flex items-center space-x-2'>
                 <Form {...form}>
                   <FormField
                     control={form.control}
@@ -243,11 +212,11 @@ const AirportForm = () => {
                               <Button
                                 variant={"outline"}
                                 className={cn(
-                                  "w-full sm:w-[180px] pl-3 text-left font-normal border-none",
+                                  "w-[180px] pl-3 text-left font-normal",
                                   !field.value && "text-muted-foreground"
                                 )}
                               >
-                                <FaCalendarAlt className="mr-2 text-gray-500" />
+                                <FaCalendarAlt className="mr-2 text-gray-500" /> {/* Calendar icon */}
                                 {formData.DropDate ? (
                                   formatDate(formData.DropDate)
                                 ) : (
@@ -258,13 +227,16 @@ const AirportForm = () => {
                           </PopoverTrigger>
                           <PopoverContent className="w-auto p-0" align="start">
                             <Calendar
-                              className="bg-white-500"
+                              className='bg-white-500'
                               mode="single"
                               selected={formData.DropDate}
                               onSelect={(date) => {
                                 field.onChange(date);
-                                handleDateChange(date, "DropDate");
+                                handleDateChange(date, 'DropDate');
                               }}
+                              disabled={(date) =>
+                                date > new Date() || date < new Date("1900-01-01")
+                              }
                               initialFocus
                             />
                           </PopoverContent>
@@ -278,22 +250,24 @@ const AirportForm = () => {
                 <input
                   type="time"
                   name="DropTime"
-                  className="w-full sm:w-[120px] py-2 px-4 bg-white border-none rounded-lg"
+                  className="w-[32%] py-2 px-4 bg-white rounded-lg focus:outline-none"
                   value={formData.DropTime}
                   onChange={handleChange}
-                  pattern="[0-9]{2}:[0-9]{2}"
+                  pattern="[0-9]{2}:[0-9]{2}" // Ensure the time format is 24-hour without AM/PM
                 />
               </div>
             </div>
+
             {/* Submit Button */}
-            <div className="flex justify-center items-center sm:col-span-3 ml-[1000px] mt-[-110px]">
-              <Button
-                type="submit"
-                className="bg-primary text-white hover:bg-darkGreen rounded-md py-2 px-6 w-[150px]"
+            <div className='flex justify-center mt-6'>
+              <Button 
+                type='submit' 
+                className='bg-[#193D1C] text-white text-sm py-2 px-4 rounded-lg shadow-md hover:bg-[#193D1C] w-[50%] ml-[485%] mt-[-80px]'
               >
-                Get Quote
+                Search Parking Space
               </Button>
             </div>
+
           </div>
         </form>
       </div>
