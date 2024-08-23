@@ -65,7 +65,7 @@ const ParkingOptions:React.FC = () => {
             </div>
               </div>
             <div className="flex-1 flex ml-[-150px] items-end">
-              <Image src={Reactangular} alt="Meet and Greet Parking" className="w-full h-auto" />
+              <Image src={Reactangular} alt="Meet and Greet Parking" style={{width:"502px" ,height:"374px"}} className="w-full h-auto" />
             </div>
           </div>
         </div>
