@@ -50,7 +50,8 @@ const ParkingOptions:React.FC = () => {
           <div className="flex flex-col md:flex-row gap-8 items-start">
             <div className="flex-1 flex flex-col mr-[-200px] justify-between">
               <div className="">
-              <h2 className="text-[40px] ml-[-450px] font-bold">Meet and Greet Parking</h2>
+              <h2 className="text-[40px] ml-[-450px] font-bold">Heathrow airport <br/>
+              Meet and Greet   service</h2>
               <p className="text-black w-[95%] ml-[-440px] text-sm mt-6">
                 At Budget Parking Heathrow, We're Committed To Making Your
                 Travel Experience As Smooth As Possible. Founded On The
@@ -65,7 +66,7 @@ const ParkingOptions:React.FC = () => {
             </div>
               </div>
             <div className="flex-1 flex ml-[-150px] items-end">
-              <Image src={Reactangular} alt="Meet and Greet Parking" style={{width:"502px" ,height:"374px"}} className="w-full h-auto" />
+              <Image src={Reactangular} alt="Meet and Greet Parking" className="w-full h-auto" />
             </div>
           </div>
         </div>
